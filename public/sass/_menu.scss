@@ -1,0 +1,45 @@
+.menu {
+    width: 20%;
+    float: left;
+    transition: 1s ease;
+}
+.menu-fix {
+    width: 80%;
+    margin-top: 0px;
+    position: fixed;
+    z-index: 99;
+    transition: 1s ease;
+}
+/* swiper direccionamiento lateral */
+.derecha{
+    width: 80%;
+    float: right;
+}
+
+/* 
+Menu lateral
+ */
+#bars {
+    font-size: 0%;
+}
+
+.logaut {
+    float: right;
+    color: black;
+}
+
+/*  
+Media queris
+ */
+
+@media(max-width:550px) {
+    .menu {
+        display: none;
+    }
+    .derecha {
+        width: 100%;
+    }
+    #bars {
+        font-size: 100%;
+    }
+}
