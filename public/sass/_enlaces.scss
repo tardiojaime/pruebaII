@@ -1,90 +1,27 @@
-table tbody tr td.options {
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center
-}
-
-table tbody tr td.options a.btn-opciones {
-    border-radius: 50%;
-    font-size: 80%;
-    background-color: transparent;
-    -webkit-box-shadow: 0px 0px 15px black;
-    box-shadow: 0px 0px 15px black;
-    color: #020202;
-    padding: 5px 5px;
-    -webkit-transition: 1s ease;
-    transition: 1s ease;
-    z-index: 1
-}
-
-table tbody tr td.options a.btn-opciones:hover {
-    font-size: 80%;
-    background-color: white;
-    color: blue;
-    -webkit-box-shadow: 0px 0px 15px blue;
-    box-shadow: 0px 0px 15px blue
-}
-
-table tbody tr td.options div.mas-opciones {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-transform: translate(500px, 0px);
-    transform: translate(500px, 0px);
-    -webkit-transition: 1s ease;
-    transition: 1s ease;
-    z-index: 9
-}
-
-table tbody tr td.options div.mas-opciones a.btn-enlaces:hover {
-    color: black;
-    background-color: transparent
-}
-
-table tbody tr td.options div.mas-opciones li {
-    display: inline;
-    margin-left: 5px;
-    list-style: none
-}
-
-table tbody tr td.options div.mas-opciones li a {
+a.btn-enlaces {
     border-radius: 50%;
     padding: 5px 5px;
     -webkit-box-shadow: 0px 0px 15px black;
     box-shadow: 0px 0px 15px black
 }
 
-table tbody tr td.options div.mas-opciones li:nth-child(1) a {
+a.btn-enlaces:nth-child(1) {
     background-color: #06a2ad;
     color: white
 }
 
-table tbody tr td.options div.mas-opciones li:nth-child(2) a {
+a.btn-enlaces:nth-child(2) {
     background-color: #500fe9;
     color: white
 }
 
-table tbody tr td.options div.mas-opciones li:nth-child(3) a {
+a.btn-enlaces:nth-child(3) {
     background-color: #e90f75;
     color: white
+}
+a.btn-enlaces:hover{
+    color:black;
+    background-color: blanchedalmond;
 }
 //botones con efecto
 .btn-efecto{

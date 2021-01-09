@@ -14,8 +14,6 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
 
     <!-- Styles -->
-    <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
-
     <link rel="stylesheet" href="{{asset('css/swiper/swiper-bundle.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
 
@@ -26,20 +24,19 @@
     <script src="{{asset('js/variable-pie.js')}}"></script>
     <script src="{{asset('js/export-data.js')}}"></script>
     
-    <script src="{{asset('js/exports/alert.js')}}"></script>
-    <script src="{{asset('js/exports/load.js')}}"></script>
+    <script src="{{asset('js/exports/Alert.js')}}"></script>
+    <script src="{{asset('js/exports/Load.js')}}"></script>
     <!-- script para el grafico de columnas -->
     <script src="{{asset('js/highcharts-3d.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/grafic.css')}}">
-    <link rel="stylesheet" href="{{asset('css/datatables/jquery.dataTables.css')}}">
+    
     <script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
+    <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
 </head>
 
 <body>
     @yield('content')
-
-    <!-- Scripts -->
     <script src="{{asset('js/all.js')}}"></script>
     <script src="{{asset('js/index.js')}}"></script>
 

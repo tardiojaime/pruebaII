@@ -30,7 +30,8 @@
                             <td class="px-6 py-2">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="{{asset('storage/'.$art->imagen)}}" alt="">
+                                        <img class="h-10 w-10 rounded-full" src="{{asset('storage/'.$art->imagen)}}"
+                                            alt="">
                                     </div>
                                     <div class="ml-4">
                                         <div class="text-sm font-medium text-gray-900">{{$art->nombre}}</div>
@@ -43,24 +44,17 @@
                             <td class="px-6 py-2">
                                 {{$art->precio}}
                             </td>
-                            <td class="px-6 py-2 options">
-                                <a href="#" class="btn-opciones"><i class="fas fa-plus"></i></a>
-                                <div class="mas-opciones">
-                                    <li>
-                                        <a href="" class="btn-enlaces view-user">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="" page="1" class="btn-enlaces edit-user">
-                                            <i class="fas fa-pen-alt"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="btn-enlaces page delete-user">
-                                            <i class="far fa-trash-alt"></i>
-                                        </a>
-                                    </li>
+                            <td class="pr-2 py-2">
+                                <div class="w-full flex justify-center justify-between">
+                                    <a href="" class="btn-enlaces view-user">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="" page="1" class="btn-enlaces edit-user">
+                                        <i class="fas fa-pen-alt"></i>
+                                    </a>
+                                    <a href="#" class="btn-enlaces page delete-user">
+                                        <i class="far fa-trash-alt"></i>
+                                    </a>
                                 </div>
                             </td>
                         </tr>

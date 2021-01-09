@@ -18,6 +18,7 @@ class Articulo extends Model
         'precio',
         'usuario',
         'imagen',
+        'fecha',
         'status'
     ];
 }

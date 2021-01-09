@@ -82,7 +82,7 @@
         </div>
     </nav>
     <div class="px-2 mx-auto container" id="contenidos">
-<!--         @section('carga')
+@section('carga')
         <figure class="highcharts-figure pr-1">
             <div id="container"></div>
             <p class="highcharts-description border-primary">
@@ -95,7 +95,7 @@
                 Ventas realizadas durante los ultimos dias
             </p>
         </figure>
-        @show -->
+        @show
 
     </div>
 </div>

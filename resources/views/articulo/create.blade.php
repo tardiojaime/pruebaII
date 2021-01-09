@@ -6,14 +6,6 @@
         @csrf
         <div class="grid grid-cols-2 gap-4 mb-5">
             <div>
-                <label for="categoria" class="text-sm font-medium text-indigo-500">
-                    Categoria
-                </label>
-                <select name="categoria" id="categoria" class="w-full py-1  border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <option value="">Conect</option>
-                </select>
-            </div>
-            <div>
                 <label for="nombre" class="text-sm font-medium text-indigo-500">
                     Nombre
                 </label>
