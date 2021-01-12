@@ -1,48 +1,65 @@
-<div class="card">
-    <div class="card-body">
-        <form action="Users" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="row" style="padding:0px 25px;">
-                <div class="col-md-6 form-group input-group-sm ">
-                    <label for="name">Nombre</label>
-                    <input type="text" name="name" class="form-control" placeholder="Usuer name" required>
-                </div>
-                <div class="col-md-6 form-group input-group-sm ">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" " class=" form-control" placeholder="Email" required>
-                </div>
-                <div class="col-md-6 form-group input-group-sm ">
-                    <label for="email">Contraseña</label>
-                    <input type="password" name="password" " class=" form-control" placeholder="Contraseña" required>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="avatar">Avatar</label>
-                    <input type="file" class="form-control-file" name="avatar">
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="background">Fondo</label>
-                    <input type="file" class="form-control-file" name="background">
-                </div>
-                <div class="form-group col-md-6 input-group-sm">
-                    <label class="" for="rol">Rol</label>
-                    <select name="rol" class="form-control">
-                        <option value="admin">Administrador</option>
-                        <option value="user">Usuario</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6 input-group-sm">
-                    <label for="telefono">Telefono</label>
-                    <input type="number" min="60000000" class="form-control" name="telefono" required>
-                </div>
-                <div class="form-group col-md-12">
-                    <button type="submit" id="user-submit" class="btn btn-success btn-sm float-left"><i
-                            class="fas fa-save"></i>
-                        Guardar</button>
-                    <button type="button" class="btn btn-dark btn-sm float-right" data-dismiss="modal"><i
-                            class="far fa-trash-alt"></i> Cancelar</button>
-                </div>
+<div class="w-full p-5 sm:p-10 md:p-15">
+    <h2 class=" text-center h-8 text-2xl font-medium text-indigo-500">
+        Nuevo Usuario
+    </h2>
+    <form action="/Usuarios" method="POST" enctype="multipart/form-data" class="space-y-2 mt-3" id="articulo-form">
+        @csrf
+        <div class="grid grid-cols-2 gap-4 mb-5">
+            <div>
+                <label for="nombre" class="text-sm font-medium text-indigo-500">
+                    Nombre
+                </label>
+                <input type="text" name="nombre" id="nombre"
+                class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="Nombre">
             </div>
-        </form>
-    </div>
+            <div>
+                <label for="email" class="text-sm font-medium text-indigo-500">
+                    Email
+                </label>
+                <input type="email" name="email" id="email"
+                class="w-full py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="email">
+            </div>
+            <div>
+                <label for="password" class="text-sm font-medium text-indigo-500">
+                    Contraseña
+                </label>
+                <input type="text" name="password" id="password"
+                class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                >
+            </div>
+            <div>
+                <label for="avatar" class="text-sm font-medium text-indigo-500">
+                    Avatar
+                </label>
+                <input type="file" name="avatar" id="avatar"
+                class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                >
+            </div>
+            <div>
+                <label for="rol" class="text-sm font-medium text-indigo-500">
+                    Rol
+                </label>
+                <select name="rol" id="rol"
+                    class="w-full py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"">
+                    <option value="usuario">Usuario</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+            </div>
+            <div>
+                <label for="telefono" class="text-sm font-medium text-indigo-500">
+                    Telefono
+                </label>
+                <input type="number" name="telefono" id="telefono"
+                class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                >
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <input type="submit" value="Agregar" id="enviar_user" class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-indigo-600 hover:bg-indigo-800">
+            <a href="#" class="cancelar_u py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
+        </div>
+    </form>
 </div>
-<script src="{{asset('js/users/index.js')}}"></script>
+<script src="{{asset('js/index/users.js')}}"></script>

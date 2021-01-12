@@ -1,20 +1,16 @@
 class Load extends Alert{
-    constructor(s,e,i,a,url, container, table, datos){
+    constructor(s,e,i,a,action, url, datos){
         super(s,e,i,a);
+        this.action = action;
         this.url = url;
-        this.container = container;
-        this.table = table; 
         this.datos = datos;
     }
     get index(){
-        this.info = "Cargando...";
-        this.info;
         $.ajax({
             type: 'GET',
             url: this.url,
             success: (data)=>{
-                this.container.html(data);
-                $("#table-principal").DataTable();
+                $('#contenidos').html(data);
             },error: ()=>{
                 this.alert = "Error en la carga...";
                 this.alert;
@@ -25,6 +21,13 @@ class Load extends Alert{
     set newURL(url){
         this.url = url;
     }
+    set newdatos(data){
+        this.datos = data;
+    }
+    set newaction(a){
+        this.action = a;
+    }
+
     get create_se(){
         $.ajax({
             type: 'GET',
@@ -32,7 +35,7 @@ class Load extends Alert{
             success: (data)=>{
                 this.success = "Cargando...";
                 this.success;
-                this.container.html(data);
+                $('#contenidos').html(data);
             },error: ()=>{
                 this.error = "Se produjo un error...";
                 this.error;
@@ -40,16 +43,16 @@ class Load extends Alert{
         });
     }
     get store(){
-        $.post(this.url, this.datos, (info) => {
-            this.success = info;
+        $.post(this.action, this.datos, (info) => {
+            this.success = info.sms;
             this.success;
             $.ajax({
                 type: 'GET',
                 url: this.url,
                 success: (data)=>{
-                    container.html(data);
-                    table.Datatable();
+                    $('#contenidos').html(data);
                 },error: ()=>{
+                    this.alert="Error en la carga..."
                     this.alert;
                 }
             });
@@ -77,3 +80,4 @@ class Load extends Alert{
     }
 
 }
+var load = new Load(1,2,3,4,5,6,"","");

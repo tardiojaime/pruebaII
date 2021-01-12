@@ -43,6 +43,7 @@ class ArticuloController extends Controller
         $art->nombre = $request->get('nombre');
         $art->descripcion = $request->get('descripcion');
         $art->precio = $request->get('precio');
+        $art->cantidad = 0;
         $art->usuario = $request->get('usuario');
         if($request->hasfile('imagen')){
             $img = $request->file('imagen')->store('public/image/articulos');
@@ -51,8 +52,8 @@ class ArticuloController extends Controller
         $art->fecha = Carbon::now('America/La_Paz')->toDateTimeString();
         $art->status = "1";
         $art->save();
-        /* return response()->json(["sms"=>$art->nombre]); */
-        return Redirect('Articulos');
+        return response()->json(["sms"=>$art->nombre]);
+
     }
 
     /**
@@ -63,10 +64,9 @@ class ArticuloController extends Controller
      */
     public function show($id)
     {
-        $datos = DB::table('articulo as a')
-        ->where('a.id','=',$id)
-        ->get();
-        return view("articulo.show", ["datos"=>$datos]);
+        $datos = Articulo::findOrFail($id);
+        return view("articulo.show", ['datos'=>$datos]);
+
     }
 
     /**
@@ -77,9 +77,7 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     {
-        $datos = DB::table('articulo as a')
-        ->where('a.id','=',$id)
-        ->get();
+        $datos = Articulo::findOrFail($id);
         return view("articulo.edit", ["datos"=>$datos]);
     }
 
@@ -96,7 +94,6 @@ class ArticuloController extends Controller
         $art->nombre = $request->get('nombre');
         $art->descripcion = $request->get('descripcion');
         $art->precio = $request->get('precio');
-        $art->usuario = $request->get('usuario');
         if($request->hasfile('imagen')){
             $img = $request->file('imagen')->store('public/image/articulos');
             $art->imagen = self::suprimir($img);

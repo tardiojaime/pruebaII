@@ -1,5 +1,41 @@
-@extends('layout.app')
-@section('content')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Beto') }}</title>
+
+    <!-- Fonts -->
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{asset('css/swiper/swiper-bundle.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/toastr.css')}}">
+
+    <script src="{{asset('js/swiper/swiper-bundle.min.js')}}"></script>
+    <script src="{{asset('js/toastr.min.js')}}"></script>
+    <script src="{{asset('js/highcharts.js')}}"></script>
+    <!-- scripts para la grafica circular -->
+    <script src="{{asset('js/variable-pie.js')}}"></script>
+    <script src="{{asset('js/export-data.js')}}"></script>
+    
+    <script src="{{asset('js/exports/Alert.js')}}"></script>
+    <script src="{{asset('js/exports/Load.js')}}"></script>
+    <!-- script para el grafico de columnas -->
+    <script src="{{asset('js/highcharts-3d.js')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/grafic.css')}}">
+    
+    <script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
+    <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
+</head>
+<body>
+@section('main')
 <div id="menu-izquierdo" class="min-h-screen bg-gray-100 menu relative shadow-md bg-white rounded-tl-3xl rounded-br-3xl overflow-hidden">
     <div class="shadow-md bg-center h-36 bg-cover" style="background-image:url({{asset('images/background2.jpg')}})">
         <div class="absolute mt-24">
@@ -9,21 +45,21 @@
     </div>
     <ul class=" flex flex-col py-4">
         <li class="mb-1 hover:bg-white">
-            <a href="#" id="btn-articulos"
+            <a href="{{route('articulo')}}" id="btn-articulos"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
                 <span class="text-sm font-medium">Articulos</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
-            <a href="#" id="btn-compras"
+            <a href="#" id="btn-ventas"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
                 <span class="text-sm font-medium">Ventas</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
-            <a href="#" id="btn-facturas"
+            <a href="#" id="btn-ingresos"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
                 <span class="text-sm font-medium">Ingresos</span>
@@ -31,24 +67,31 @@
         </li>
 
         <li class="mb-1 hover:bg-white">
-            <a href="" id="export-pdf"
+            <a href="" id="btn-proveedores"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
                 <span class="text-sm font-medium">Proveedores</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
-            <a href="" id="export-exel font-medium"
-                class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
+            <a href="" id="btn-usuarios"
+                class="font-medium flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
-                <span class="text-sm">Clientes</span>
+                <span class="text-sm">Usuarios</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
-            <a href="" id="export-exel font-medium"
-                class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
+            <a href="" id="btn-estadistica"
+                class="flex font-medium items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
                 <i class="fas fa-home"></i>
-                <span class="text-sm">Administrador</span>
+                <span class="text-sm">Estadistica</span>
+            </a>
+        </li>
+        <li class="mb-1 hover:bg-white">
+            <a href="" id="btn-excel"
+                class="flex items-center font-medium transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
+                <i class="fas fa-home"></i>
+                <span class="text-sm">Excel</span>
             </a>
         </li>
     </ul>
@@ -56,7 +99,8 @@
         <p class="text-md font-medium text-purple-800">BETO</p>
     </div>
 </div>
-<div id="dos" class="derecha">
+@show
+<div id="dos" class="derecha max-h-screen overflow-auto">
     <nav class="shadow-lg rounded-tr-3xl">
         <div class="mx-auto px-2">
             <div class="flex items-center justify-between h-10">
@@ -75,7 +119,7 @@
                             <i class="fas fa-power-off"></i>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
-                            </form>
+                                </form>
                         </a>
                 </div>
             </div>
@@ -200,6 +244,11 @@ Highcharts.chart('container', {
     }]
 });
 </script>
+<!-- <script src="{{asset('js/cargaIndex/index.js')}}"></script> -->
+@show
+<script src="{{asset('js/all.js')}}"></script>
 <script src="{{asset('js/cargaIndex/index.js')}}"></script>
+@yield('scripts')
+</body>
 
-@endsection
+</html>

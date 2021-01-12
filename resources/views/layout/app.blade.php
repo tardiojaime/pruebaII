@@ -38,7 +38,7 @@
 <body>
     @yield('content')
     <script src="{{asset('js/all.js')}}"></script>
-    <script src="{{asset('js/index.js')}}"></script>
+    <script src="{{asset('js/cargaIndex/index.js')}}"></script>
 
 </body>
 
