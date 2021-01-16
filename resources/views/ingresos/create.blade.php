@@ -13,7 +13,7 @@
                 <select name="proveedor" id="prove"
                     class="w-full py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"">
                     @foreach($proveedores as $usu)
-                    <option value=" {{$usu->id}}">{{$usu->name}}</option>
+                    <option value=" {{$usu->id}}">{{$usu->nombre}}</option>
                     @endforeach
                 </select>
             </div>

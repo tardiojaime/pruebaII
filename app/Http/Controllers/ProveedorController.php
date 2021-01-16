@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Carbon;
 use App\Proveedor;
 
 class ProveedorController extends Controller
@@ -16,7 +17,7 @@ class ProveedorController extends Controller
     public function index()
     {
         $user = DB::table('proveedor as u')
-        ->select('u.id','u.nombre', 'u.email', 'u.direccion','u.telefono')
+        ->select('u.id','u.nombre', 'u.email', 'u.direccion','u.telefono', 'u.usuario')
         ->where('u.status','=', '1')
         ->get();
         return view('proveedor.index', ['proveedor'=>$user]);
@@ -44,9 +45,11 @@ class ProveedorController extends Controller
             $pro = new Proveedor();
             $pro->nombre = $request->get('nombre');
             $pro->email = $request->get('email');
-            $pro->direccion = $request->get('direccion');
             $pro->telefono = $request->get('telefono');
+            $pro->direccion = $request->get('direccion');
             $pro->status = "1";
+            $pro->fecha = Carbon::now('America/La_Paz')->toDateTimeString();
+            $pro->usuario = $request->get('usuario');
             $pro->save();
             return response()->json(['sms'=>"Proveedor agregado."]);
         } catch (\Throwable $th) {
@@ -88,11 +91,11 @@ class ProveedorController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            $pro = new Proveedor();
+            $pro = Proveedor::findOrFail($id);
             $pro->nombre = $request->get('nombre');
             $pro->email = $request->get('email');
-            $pro->direccion = $request->get('direccion');
             $pro->telefono = $request->get('telefono');
+            $pro->direccion = $request->get('direccion');
             $pro->status = "1";
             $pro->update();
             return response()->json(['sms'=>"Proveedor Actualizado."]);

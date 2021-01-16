@@ -33,8 +33,6 @@ class Load extends Alert{
             type: 'GET',
             url: this.url,
             success: (data)=>{
-                this.success = "Cargando...";
-                this.success;
                 $('#contenidos').html(data);
             },error: ()=>{
                 this.error = "Se produjo un error...";
@@ -44,8 +42,8 @@ class Load extends Alert{
     }
     get store(){
         $.post(this.action, this.datos, (info) => {
-            this.success = info.sms;
-            this.success;
+            this.info = info.sms;
+            this.info;
             $.ajax({
                 type: 'GET',
                 url: this.url,

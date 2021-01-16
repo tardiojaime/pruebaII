@@ -45,23 +45,23 @@
     </div>
     <ul class=" flex flex-col py-4">
         <li class="mb-1 hover:bg-white">
-            <a href="{{route('articulo')}}" id="btn-articulos"
+            <a href="#" id="btn-articulos"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-box-open"></i>
                 <span class="text-sm font-medium">Articulos</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
             <a href="#" id="btn-ventas"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-cart-plus"></i>
                 <span class="text-sm font-medium">Ventas</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
             <a href="#" id="btn-ingresos"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-dolly"></i>
                 <span class="text-sm font-medium">Ingresos</span>
             </a>
         </li>
@@ -69,28 +69,28 @@
         <li class="mb-1 hover:bg-white">
             <a href="" id="btn-proveedores"
                 class="flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-truck"></i>
                 <span class="text-sm font-medium">Proveedores</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
             <a href="" id="btn-usuarios"
                 class="font-medium flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-users"></i>
                 <span class="text-sm">Usuarios</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
             <a href="" id="btn-estadistica"
                 class="flex font-medium items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-chart-bar"></i>
                 <span class="text-sm">Estadistica</span>
             </a>
         </li>
         <li class="mb-1 hover:bg-white">
             <a href="" id="btn-excel"
                 class="flex items-center font-medium transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
-                <i class="fas fa-home"></i>
+                <i class="fas fa-file-excel"></i>
                 <span class="text-sm">Excel</span>
             </a>
         </li>

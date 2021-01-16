@@ -1,7 +1,4 @@
 $(function(){
-    var content = $('#contenidos');
-    var ajaxs = new Load(1,2,3,4,5,6,content,"d");
-
     var incremento = 0, total = 0, adicion = [];
     var dat = new Date();
     dat = dat+"";
@@ -72,14 +69,14 @@ $(function(){
                 contenedor_table.removeClass('hidden')
                 incremento++;
             }else{
-                ajaxs.info = "Articulo no disponible...";
-                ajaxs.info;
+                load.info = "Articulo no disponible...";
+                load.info;
                 cantidad.focus();
             }
 
         }else{
-            ajaxs.info = "Ingrese la cantidad de productos";
-            ajaxs.info;
+            load.info = "Ingrese la cantidad de productos";
+            load.info;
             cantidad.focus();
         }     
     };
@@ -87,43 +84,51 @@ $(function(){
     $(".view-venta").on('click', function(evt){
         evt.preventDefault();
         let url = $(this).attr('href');
-        ajaxs.newURL = url;
-        ajaxs.create_se;
+        load.newURL = url;
+        load.create_se;
         
     });
     $("#create-v").on('click', function(evt){
-        ajaxs.newURL =  "Ventas/create";
-        ajaxs.create_se;
+        load.newURL =  "/Ventas/create";
+        load.create_se;
     });
 
     $("#enviar-venta").on('click', function(evt){
         evt.preventDefault();
         let form = $(this).parents('form');
         let action = form.attr('action');
-        ajaxs.newURL =  "Ventas";
-        ajaxs.newaction = action;
-        ajaxs.newdatos = form.serialize();
-        ajaxs.store;
+        load.newURL =  "/Ventas";
+        load.newaction = action;
+        load.newdatos = form.serialize();
+        load.store;
     });
 
     $("#create-i").on('click', function(evt){
-        ajaxs.newURL =  "Ingresos/create";
-        ajaxs.create_se;
+        load.newURL =  '/Ingresos/create';
+        load.create_se;
     });
     $("#enviar-ingreso").on('click', function(evt){
         evt.preventDefault();
         let form = $(this).parents('form');
         let action = form.attr('action');
-        ajaxs.newURL =  "Ingresos";
-        ajaxs.newaction = action;
-        ajaxs.newdatos = form.serialize();
-        ajaxs.store;
+        load.newURL =  "/Ingresos";
+        load.newaction = action;
+        load.newdatos = form.serialize();
+        load.store;
     });
     $(".view-ingreso").on('click', function(evt){
         evt.preventDefault();
         let url = $(this).attr('href');
-        ajaxs.newURL = url;
-        ajaxs.create_se;
+        load.newURL = url;
+        load.create_se;
         
     });
+    $(".vi-index").on('click', function(evt){
+        evt.preventDefault();
+        let url = $(this).attr('sitio');
+        load.newURL = url;
+        load.create_se;
+        
+    });
+
 })

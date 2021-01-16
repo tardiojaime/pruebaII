@@ -65,8 +65,8 @@
     </div>
     
         <div class="flex justify-between px-8">
-            <a href="" id="ventas-index"
-                class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-gray-800 bg-gradient-to-r from-green-500 to-green-200 hover:text-white">Ventas</a>
-        </div>
-    
+            <a href="#" sitio="/Ventas"
+                class="vi-index py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-gray-800 bg-gradient-to-r from-green-500 to-green-200 hover:text-white">Ventas</a>
+        </div>    
 </div>
+<script src="{{asset('js/exports/ventas.js')}}"></script>

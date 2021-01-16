@@ -1,6 +1,6 @@
 <div class="flex flex-col mt-5">
     <div class="flex justify-between px-8">
-        <h2 class="text-2xl font-medium text-indigo-800 hover:text-indigo-500">Detalle de la Venta.</h2>
+        <h2 class="text-2xl font-medium text-indigo-800 hover:text-indigo-500">Detalles del Ingreso.</h2>
     </div>
     <div class="grid grid-cols-2 gap-4 border rounded-md shadow-xl px-3 py-3">
         <div>
@@ -65,8 +65,9 @@
     </div>
     
         <div class="flex justify-between px-8">
-            <a href="" id="ventas-index"
-                class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-gray-800 bg-gradient-to-r from-green-500 to-green-200 hover:text-white">Ventas</a>
+            <a href="#" sitio="/Ingresos"
+                class="vi-index py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-gray-800 bg-gradient-to-r from-green-500 to-green-200 hover:text-white">Volver</a>
         </div>
     
 </div>
+<script src="{{asset('js/exports/ventas.js')}}"></script>
