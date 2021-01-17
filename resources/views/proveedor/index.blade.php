@@ -51,7 +51,7 @@
                                       class="btn-enlaces edit-provee">
                                         <i class="fas fa-pen-alt"></i>
                                     </a>
-                                    <a href="#" class="btn-enlaces page delete-user">
+                                    <a href="#" class="btn-enlaces page delete-article" ids="{{$user->id}}" nombre="{{$user->nombre}}">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>

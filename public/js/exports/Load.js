@@ -1,56 +1,54 @@
-class Load extends Alert{
-    constructor(s,e,i,a,action, url, datos){
-        super(s,e,i,a);
+class Load extends Alert {
+    constructor(s, e, i, a, action, url, datos) {
+        super(s, e, i, a);
         this.action = action;
         this.url = url;
         this.datos = datos;
     }
-    get index(){
+    get index() {
         $.ajax({
             type: 'GET',
             url: this.url,
-            success: (data)=>{
+            success: (data) => {
                 $('#contenidos').html(data);
-            },error: ()=>{
+            }, error: () => {
                 this.alert = "Error en la carga...";
                 this.alert;
             }
         });
     }
 
-    set newURL(url){
+    set newURL(url) {
         this.url = url;
     }
-    set newdatos(data){
+    set newdatos(data) {
         this.datos = data;
     }
-    set newaction(a){
+    set newaction(a) {
         this.action = a;
     }
 
-    get create_se(){
+    get create_se() {
         $.ajax({
             type: 'GET',
             url: this.url,
-            success: (data)=>{
+            success: (data) => {
                 $('#contenidos').html(data);
-            },error: ()=>{
+            }, error: () => {
                 this.error = "Se produjo un error...";
                 this.error;
             }
         });
     }
-    get store(){
+    get store() {
         $.post(this.action, this.datos, (info) => {
-            this.info = info.sms;
-            this.info;
             $.ajax({
                 type: 'GET',
                 url: this.url,
-                success: (data)=>{
+                success: (data) => {
                     $('#contenidos').html(data);
-                },error: ()=>{
-                    this.alert="Error en la carga..."
+                }, error: () => {
+                    this.alert = "Error en la carga..."
                     this.alert;
                 }
             });
@@ -58,16 +56,14 @@ class Load extends Alert{
             this.error;
         })
     }
-    get store_modal(){
-        $.post(this.url, this.datos, (info) => {
-            this.success = info;
-            this.success;
+    get store_modal() {
+        $.post(this.action, this.datos, (info) => {
         }).fail(() => {
             this.alert = "Iperacion fallida...";
             this.alert;
         })
     }
-    get delete(){
+    get delete() {
         $.post(this.url, this.datos, (info) => {
             this.info = "Eliminacion completa";
             this.info;
@@ -78,4 +74,4 @@ class Load extends Alert{
     }
 
 }
-var load = new Load(1,2,3,4,5,6,"","");
+var load = new Load(1, 2, 3, 4, 5, 6, "", "");

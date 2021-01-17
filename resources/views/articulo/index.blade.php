@@ -52,7 +52,7 @@
                                     <a href="{{URL::action('ArticuloController@edit', $art->id)}}" page="1" class="btn-enlaces edit-user">
                                         <i class="fas fa-pen-alt"></i>
                                     </a>
-                                    <a href="#" class="btn-enlaces page delete-user">
+                                    <a href="#" class="btn-enlaces delete-article" ids="{{$art->id}}" nombre="{{$art->nombre}}">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>

@@ -23,6 +23,8 @@ Route::get("aa", function(){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/estadis', 'HomeController@estadistica');
+
 
 Route::resource('/Articulos', 'ArticuloController');
 Route::get('Articulos', 'ArticuloController@index')->name('articulo');
@@ -32,20 +34,4 @@ Route::post('/update/user', 'UserController@update');
 Route::resource('/Ingresos', 'IngresosController');
 Route::resource('/Proveedores', 'ProveedorController');
 
-Route::get("/date", function(){
-    $hoy = date("Y-m-d"); 
-    $fecha = getdate();
-    $ano = $fecha['year'];
-    $dia = $fecha['mday'];
-    $mes = $fecha["mon"];
-    if($mes != 1){
-        $mes = $mes - 1;
-    }else{
-        $mes = 12;
-        $ano = $ano-1;
-    }
-    $modificado = $ano."-".$mes."-".$dia;
-    $datos = DB::table('venta as v')
-    ->whereBetween('v.fecha', [$modificado,$hoy])->get();
-    return $datos; 
-});
+Route::get("/export/{table}", 'HomeController@ExcelExport');
