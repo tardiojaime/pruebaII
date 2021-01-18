@@ -31,12 +31,12 @@
     <link rel="stylesheet" href="{{asset('css/grafic.css')}}">
 
     <script src="{{asset('js/datatables/jquery.dataTables.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
     <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
 </head>
-
 <body>
     @section('main')
+    <a href="#" class="icon_responsive w-8 h-8 text-center rounded-full bg-black px-2 py-1 text-white" id="a_responsive"><i class="fas fa-bars" id="icon_responsive"></i></a>
     <div id="menu-izquierdo"
         class="min-h-screen bg-gray-100 menu relative shadow-md bg-white rounded-tl-3xl rounded-br-3xl overflow-hidden">
         <div class="shadow-md bg-center h-36 bg-cover"
@@ -109,7 +109,7 @@
                 <div class="flex items-center justify-between h-10">
                     <div class="flex items-center">
                         <div class="">
-                            <img class="h-8 w-8 rounded-full" src="{{asset('images/bg.jpg')}}" alt="Workflow">
+                            <img class="h-8 w-8 rounded-full" src="{{asset('images/icono.ico')}}" alt="Workflow">
                         </div>
                         <div>
                             <a href="" class="ml-1 p-0.5 rounded-full hover:text-purple-800"><i
@@ -194,7 +194,6 @@
     </div>
     @include('exports.delete')
     @include('estadistica.excel')
-
     <script>
     /* graficas */
     Highcharts.chart('container-3d', {

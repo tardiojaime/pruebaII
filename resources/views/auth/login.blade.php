@@ -9,17 +9,28 @@
 
     <title>{{ config('app.name', 'login') }}</title>
     <link href="{{ asset('css/tailwind.min.css') }}" rel="stylesheet">
+    <style>
+    .fondo {
+        background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    @media(max-width:530px) {
+        .max-w-lg.shadow-2xl.mx-auto.rounded-lg.fondo {
+            width: 90%;
+        }
+    }
+    </style>
 </head>
 
 <body>
     <div class="min-h-screen w-full bg-center bg-cover flex items-center justify-center"
-        style="background-image:url({{asset('images/index1.jpg')}})">
-        <div class="container mx-auto">
-            <div class="max-w-lg shadow-2xl mx-auto rounded-lg ">
-                <h3 class="text-3xl font-medium text-indigo-600 text-center block font bold">
-                    Iniciar session
-                </h3>
+        style="background-image:url({{asset('images/loginbg.jpg')}})">
+        <div class="container mx-auto py-2">
+            <div class="max-w-lg shadow-2xl mx-auto rounded-lg fondo">
                 <form action="{{route('login')}}" method="POST" class="space-y-2 w-full p-10">
+                    <h3 class="text-3xl font-medium text-indigo-800 text-center block font bold">
+                        Iniciar session
+                    </h3>
                     @csrf
                     <div>
                         <label for="email" class="text-sm font-medium text-indigo-500">{{__('Email')}}</label>

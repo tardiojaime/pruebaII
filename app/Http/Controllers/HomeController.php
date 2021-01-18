@@ -10,6 +10,8 @@ use App\Exports\ExportIngresos;
 use App\Exports\ExportProveedores;
 use App\Exports\ExportUsers;
 use App\Exports\ExportVentas;
+use Barryvdh\DomPDF\Facade as PDF;
+
 
 use DB;
 class HomeController extends Controller
@@ -73,4 +75,26 @@ class HomeController extends Controller
             break;
         }
     }
+    public function PdfVentas($id){  
+        try {
+            $venta = DB::select('SELECT * FROM venta WHERE id = '.$id);
+            $detalle = DB::select('SELECT d.id, a.nombre, d.cantidad, d.precio FROM detallev d INNER JOIN articulo a ON a.id = d.articulo WHERE d.venta ='.$id);
+            $pdf = PDF::loadView('exports.pdfventa',[
+            'venta' => $venta, 'detalle'=>$detalle]);
+            return $pdf->stream('venta.pdf');
+        } catch (\Throwable $th) {
+            return Redirect('home');
+        } 
+    }
+    public function PdfIngresos($id){
+        try {
+            $ingreso = DB::select('SELECT i.id, i.precio, i.fecha, p.nombre, p.email, i.usuario  FROM ingreso i INNER JOIN proveedor p ON p.id = i.proveedor WHERE i.id = '.$id);
+            $detalle = DB::select('SELECT d.id, a.nombre, d.cantidad, d.precio FROM detallei d INNER JOIN articulo a ON a.id = d.articulo WHERE d.ingreso ='.$id);
+            $pdf = PDF::loadView('exports.pdfingreso',[
+            'ingreso' => $ingreso, 'detalle'=>$detalle]);
+            return $pdf->stream('ingreso.pdf');
+        } catch (\Throwable $th) {
+            return Redirect('home');
+        }   
+        }
 }

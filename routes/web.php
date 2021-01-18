@@ -35,3 +35,5 @@ Route::resource('/Ingresos', 'IngresosController');
 Route::resource('/Proveedores', 'ProveedorController');
 
 Route::get("/export/{table}", 'HomeController@ExcelExport');
+Route::get('/export/pdf/venta/{id}', 'HomeController@PdfVentas');
+Route::get('/export/pdf/ingreso/{id}', 'HomeController@PdfIngresos');

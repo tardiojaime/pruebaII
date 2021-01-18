@@ -70,7 +70,7 @@ class IngresosController extends Controller
     {
         $ingreso = DB::table('ingreso as i')
         ->join('users as u', 'u.id', '=', 'i.proveedor')
-        ->select('i.precio', 'i.fecha', 'i.usuario', 'u.email')
+        ->select('i.precio', 'i.fecha', 'i.usuario', 'u.nombre')
         ->where('i.id', '=', $id)
         ->first();
         $detalle = DB::table('detallei as di')

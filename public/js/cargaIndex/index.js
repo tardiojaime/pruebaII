@@ -1,5 +1,17 @@
 $(function () {
     
+    var responsive = ()=>{
+        $("#menu-izquierdo").toggleClass("menu");
+        $("#menu-izquierdo").toggleClass("menu-fix");
+        $("#icon_responsive").toggleClass("fa-bars");
+        $("#icon_responsive").toggleClass("fa-times");
+    }
+    var volver  = () =>{
+        $("#icon_responsive").removeClass("fa-times");
+        $("#icon_responsive").addClass("fa-bars");
+        $("#menu-izquierdo").removeClass("menu-fix");
+        $("#menu-izquierdo").addClass("menu");
+    }
     const container = $("#modals");
     const cerrar = $("#cerrar_modal");
     const cancelar = $("#cancelar_modal");
@@ -15,6 +27,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = "/Articulos";
         load.index;
+        volver()        ;
     });
     
     $("#btn-ventas").on('click', function (evt) {
@@ -24,6 +37,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = "/Ventas";
         load.index;
+        volver();
     });
     
     $("#btn-ingresos").on('click', function (a) {
@@ -33,6 +47,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = '/Ingresos';
         load.index;
+        volver();
     });
     $("#btn-proveedores").on('click', function (a) {
         a.preventDefault();
@@ -41,6 +56,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = '/Proveedores';
         load.index;
+        volver();
     });
     $("#btn-usuarios").on('click', function (a) {
         a.preventDefault();
@@ -49,6 +65,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = '/Usuarios';
         load.index;
+        volver();
     });
     $("#btn-estadistica").on('click', function (e) {
         e.preventDefault();
@@ -57,6 +74,7 @@ $(function () {
         $(this).addClass('border-l-2');
         load.newURL = '/estadis';
         load.index;
+        volver();
     });
     $("#btn-excel").on('click', function (r) {
         r.preventDefault();
@@ -64,6 +82,7 @@ $(function () {
         $(this).parents('li').addClass('bg-white');
         $(this).addClass('border-l-2');
         removerclase();
+        volver();
     });
     function quitar() {
         $(".addClass").removeClass("border-l-2");
@@ -85,7 +104,11 @@ $(function () {
     });
     $("#export_excel").on('click', function(evt){
         removerclase();
+        volver();
         
     });
-    
+    $("#a_responsive").on('click', function(evt){
+        evt.preventDefault();
+        responsive();
+    });
 });

@@ -23,7 +23,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-indigo-500">
                         @foreach($venta as $ventas)
-                        <tr>
+                        <tr id="{{$ventas->id}}">
                             <td class="px-6 py-1 ">
                                 {{$ventas->id}}
                             </td>
@@ -44,6 +44,9 @@
                                     </a>
                                     <a href="#" class="btn-enlaces page delete-user">
                                         <i class="far fa-trash-alt"></i>
+                                    </a>
+                                    <a href="{{URL::action('HomeController@PdfVentas', $ventas->id)}}" class="btn-enlaces delete-user">
+                                        <i class="fas fa-file-pdf"></i>
                                     </a>
                                 </div>
                             </td>

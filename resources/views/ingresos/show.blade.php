@@ -20,7 +20,7 @@
         </div>
         <div>
             <label class="text-sm font-medium text-indigo-500">Vendedor</label>
-            <input type="text" value="{{$ingreso->email}}" disabled
+            <input type="text" value="{{$ingreso->nombre}}" disabled
                 class="w-full py-1  px-2 border border-gray-200 rounded-bl-lg rounded-tr-lg ">
         </div>
     </div>
