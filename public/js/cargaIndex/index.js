@@ -111,4 +111,11 @@ $(function () {
         evt.preventDefault();
         responsive();
     });
+
+    $(".edit-user").on('click', function(evt){
+        evt.preventDefault();
+        let url = $(this).attr('href');
+        load.newURL = url;
+        load.create_se;
+    });
 });

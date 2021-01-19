@@ -1,3 +1,4 @@
+@if(Auth()->user()->rol == "administrador")
 <div class="flex flex-col mt-5">
     <div class="flex justify-between px-8">
         <h2 class="text-sm font-medium text-indigo-800 hover:text-indigo-500">Lista de Usuarios</h2>
@@ -25,7 +26,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-indigo-500">
                         @foreach($users as $user)
-                        <tr>
+                        <tr id="{{$user->id}}">
                             <td class="px-6 py-2  flex items-center">
                                 {{$user->id}}
                             </td>
@@ -68,3 +69,6 @@
 $("#table-principal").DataTable();
 </script>
 <script src="{{asset('js/index/users.js')}}"></script>
+@else
+<h1>Usuario no autorizado</h1>
+@endif

@@ -1,8 +1,3 @@
-@extends('main.index')
-@section('content')
-@parent
-@endsection
-@section('carga')
 <div class="w-full p-5 sm:p-10 md:p-15">
     <h2 class=" text-center h-8 text-md font-medium text-indigo-500">
         Informacion del Articulo
@@ -43,12 +38,6 @@
                     >
             </div>
             <div>
-                <label for="imagen" class="text-sm font-medium text-indigo-500">
-                    Imagen
-                </label>
-                <img src="{{asset('storage/'.$datos->imagen)}}" class="w-40 h-40 ">
-            </div>
-            <div>
                 <label for="precio" class="text-sm font-medium text-indigo-500">
                     Fecha de creacion
                 </label>
@@ -68,11 +57,10 @@
             </div>
         </div>
         <div class="flex justify-between">
-            <a href="{{URL::action('ArticuloController@edit', $datos->id)}}" value="Cancelar"
-                class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800 ">Editar</a>
-            <a href="{{route('articulo')}}" value="Cancelar"
-                class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
+            <a href="{{URL::action('ArticuloController@edit', $datos->id)}}" class="edit-article py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800 ">Editar</a>
+            <a href="#" 
+                class="cancelar_a py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
         </div>
     </div>
 </div>
-@endsection
+<script src="{{asset('js/articulo/index.js')}}"></script>

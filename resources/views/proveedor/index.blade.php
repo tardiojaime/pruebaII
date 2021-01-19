@@ -25,7 +25,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-indigo-500">
                         @foreach($proveedor as $user)
-                        <tr>
+                        <tr id="{{$user->id}}">
                             <td class="px-6 py-2  flex items-center">
                                 {{$user->id}}
                             </td>

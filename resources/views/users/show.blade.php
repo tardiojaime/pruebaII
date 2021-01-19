@@ -1,3 +1,4 @@
+@if(Auth()->user()->rol == "administrador")
 <div class="w-full p-5 sm:p-10 md:p-15">
     <h2 class=" text-center h-8 text-md font-medium text-indigo-500">
         Informacion del Usuario
@@ -62,3 +63,6 @@
     </div>
 </div>
 <script src="{{asset('js/index/users.js')}}"></script>
+@else
+<h1>Usuario no Autorizado</h1>
+@endif

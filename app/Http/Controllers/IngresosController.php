@@ -7,7 +7,11 @@ use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use DB;
 class IngresosController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -92,8 +96,21 @@ class IngresosController extends Controller
     }
     public function destroy($id)
     {
-        $ingreso = ingresos::findOrFail($id);
-        $ingreso->delete();
-        return response()->json(['sms'=>"Ingreso Elimindo"]);
+        try {
+            DB::beginTransaction();
+            $datos = DB::select('SELECT * FROM detallei d WHERE d.ingreso ='.$id);
+            $numero = count($datos);
+            if($numero != 0){
+                foreach($datos as $info){
+                    $eliminar = Detalle_i::findOrFail($info->id);
+                    $eliminar->delete();
+                }
+            }
+            $dato = Ingresos::findOrFail($id);
+            $dato->delete();
+            DB::commit();
+            } catch (\Throwable $th) {
+                DB::rollback();
+            }
     }
 }

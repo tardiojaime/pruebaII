@@ -1,8 +1,3 @@
-@extends('main.index')
-@section('content')
-@parent
-@endsection
-@section('carga')
 <div class="w-full p-5 sm:p-10 md:p-15">
     <h2 class=" text-center h-8 text-md font-medium text-indigo-500">
         Editar Articulo
@@ -36,18 +31,25 @@
                 >
             </div>
             <div>
-                <label for="imagen" class="text-sm font-medium text-indigo-500">
-                    Imagen
+                <label for="status" class="text-sm font-medium text-indigo-500">
+                    Estado
                 </label>
-                <input type="file" name="imagen" id="imagen"
-                class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
+                <select name="status" id=""
+                    class="w-full bg-white py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"">
+                    @if($datos->status == 1)
+                    <option selected value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                    @else
+                    <option value="1">Activo</option>
+                    <option selected value="0">Inactivo</option>
+                    @endif
+                </select>
             </div>
         </div>
         <div class="flex justify-between">
-            <input type="submit" value="Agregar" class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-indigo-600 hover:bg-indigo-800">
-            <a href="{{route('articulo')}}" value="Cancelar" class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
+            <input type="submit" id="article_update" value="Actualizar" class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-indigo-600 hover:bg-indigo-800">
+            <a href="#" class="cancelar_a py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
         </div>
     </form>
 </div>
-@endsection
+<script src="{{asset('js/articulo/index.js')}}"></script>

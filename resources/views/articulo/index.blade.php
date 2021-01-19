@@ -23,20 +23,12 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-indigo-500">
                         @foreach($articulos as $art)
-                        <tr>
+                        <tr id="{{$art->id}}">
                             <td class="px-6 py-2  flex items-center">
                                 {{$art->id}}
                             </td>
                             <td class="px-6 py-2">
-                                <div class="flex items-center">
-                                    <div class="flex-shrink-0 h-10 w-10">
-                                        <img class="h-10 w-10 rounded-full" src="{{asset('storage/'.$art->imagen)}}"
-                                            alt="">
-                                    </div>
-                                    <div class="ml-4">
-                                        <div class="text-sm font-medium text-gray-900">{{$art->nombre}}</div>
-                                    </div>
-                                </div>
+                                {{$art->nombre}}
                             </td>
                             <td class="px-6 py-2  text-sm text-gray-900">
                                 {{$art->descripcion}}
@@ -46,13 +38,16 @@
                             </td>
                             <td class="pr-2 py-2">
                                 <div class="w-full flex justify-center justify-between">
-                                    <a href="{{URL::action('ArticuloController@show', $art->id)}}" class="btn-enlaces view-user">
+                                    <a href="{{URL::action('ArticuloController@show', $art->id)}}"
+                                        class="btn-enlaces view-article">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="{{URL::action('ArticuloController@edit', $art->id)}}" page="1" class="btn-enlaces edit-user">
+                                    <a href="{{URL::action('ArticuloController@edit', $art->id)}}" page="1"
+                                        class="btn-enlaces edit-article">
                                         <i class="fas fa-pen-alt"></i>
                                     </a>
-                                    <a href="#" class="btn-enlaces delete-article" ids="{{$art->id}}" nombre="{{$art->nombre}}">
+                                    <a href="#" class="btn-enlaces delete-article" ids="{{$art->id}}"
+                                        nombre="{{$art->nombre}}">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                 </div>
@@ -66,6 +61,6 @@
     </div>
 </div>
 <script>
-    $("#table-principal").DataTable();
+$("#table-principal").DataTable();
 </script>
 <script src="{{asset('js/articulo/index.js')}}"></script>

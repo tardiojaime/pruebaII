@@ -131,4 +131,46 @@ $(function(){
         
     });
 
+        /* componentes para la eliminacion */
+        var removerclase = () => {
+            $("#modal_delete").removeClass("hidden");
+        }
+        var addClase = () => {
+            $("#modal_delete").addClass("hidden");
+        }
+        $(".delete_close").on('click', ()=>addClase());
+
+        $(".delete_venta").on('click', function (evt){
+            evt.preventDefault();
+            let id = $(this).attr('ids');
+            let Precio = $(this).attr('precio');
+            $("#modal-form").attr('action', '/Ventas/'+id);
+            $("#id_delete").html(id);
+            $("#info_title").html("Precio de la Venta");
+            $("#id_info").html(Precio+" Bs.");
+            $("#mensajes").html('Eliminar Venta');
+            removerclase();
+        });
+        $(".delete_ingreso").on('click', function (evt){
+            evt.preventDefault();
+            let id = $(this).attr('ids');
+            let Precio = $(this).attr('precio');
+            $("#modal-form").attr('action', '/Ingresos/'+id);
+            $("#id_delete").html(id);
+            $("#info_title").html("Precio de la Compra.");
+            $("#id_info").html(Precio+" Bs.");
+            $("#mensajes").html('Eliminar Compra');
+            removerclase();
+        });
+        $("#delete_data").on('click', function(evt){
+            evt.preventDefault();
+            let form = $(this).parents('form');
+            let action = form.attr('action');
+            load.newaction = action;
+            load.newdatos = form.serialize();
+            load.store_modal;
+            let id =$("#id_delete").text();
+            $("#"+id+"").remove();
+            addClase();
+        });
 })

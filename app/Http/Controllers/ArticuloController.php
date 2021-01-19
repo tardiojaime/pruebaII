@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ArticuloController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,8 @@ class ArticuloController extends Controller
     public function index()
     {
         $db = DB::table('articulo as a')
-        ->where('a.status', "=", '1')->get();
+        ->where('a.status', "=", '1')
+        ->get();
         return view('articulo.index', ['articulos'=>$db]);
     }
 
@@ -45,10 +50,6 @@ class ArticuloController extends Controller
         $art->precio = $request->get('precio');
         $art->cantidad = 0;
         $art->usuario = $request->get('usuario');
-        if($request->hasfile('imagen')){
-            $img = $request->file('imagen')->store('public/image/articulos');
-            $art->imagen = self::suprimir($img);
-        }
         $art->fecha = Carbon::now('America/La_Paz')->toDateTimeString();
         $art->status = "1";
         $art->save();
@@ -94,10 +95,7 @@ class ArticuloController extends Controller
         $art->nombre = $request->get('nombre');
         $art->descripcion = $request->get('descripcion');
         $art->precio = $request->get('precio');
-        if($request->hasfile('imagen')){
-            $img = $request->file('imagen')->store('public/image/articulos');
-            $art->imagen = self::suprimir($img);
-        }
+        $art->status = $request->get('status');
         $art->update();
         /* return response()->json(["sms"=>$art->nombre]); */
         return Redirect('Articulos');
@@ -117,9 +115,5 @@ class ArticuloController extends Controller
         $datos->update();
         return response()->json(['sms'=>$nombre]);
     }
-    protected function suprimir($file){
-        $num = strlen($file)-7;
-        $img = substr($file, -$num);
-        return $img;
-    }
+
 }

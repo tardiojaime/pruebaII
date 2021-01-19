@@ -37,3 +37,7 @@ Route::resource('/Proveedores', 'ProveedorController');
 Route::get("/export/{table}", 'HomeController@ExcelExport');
 Route::get('/export/pdf/venta/{id}', 'HomeController@PdfVentas');
 Route::get('/export/pdf/ingreso/{id}', 'HomeController@PdfIngresos');
+Route::PUT('/update/user/{id}', 'UserController@actualizacion');
+Route::GET('/update/user/{id}', 'UserController@visualizacion');
+Route::POST('/cambio/telefono', ('Restablecer@verificacion'))->name('cambio');
+Route::POST('/verificado/ingresar', 'Restablecer@cambiar');

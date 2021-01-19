@@ -18,7 +18,6 @@ class Articulo extends Model
         'precio',
         'cantidad',
         'usuario',
-        'imagen',
         'fecha',
         'status'
     ];

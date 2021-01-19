@@ -11,6 +11,10 @@ use App\Detalle_v;
 
 class VentasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -126,9 +130,22 @@ class VentasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
+    {           
+        try {
+        DB::beginTransaction();
+        $datos = DB::select('SELECT * FROM detallev d WHERE d.venta ='.$id);
+        $numero = count($datos);
+        if($numero != 0){
+            foreach($datos as $info){
+                $eliminar = Detalle_v::findOrFail($info->id);
+                $eliminar->delete();
+            }
+        }
         $dato = Ventas::findOrFail($id);
         $dato->delete();
-        return response()->json(['sms'=>$dato->id]);
+        DB::commit();
+        } catch (\Throwable $th) {
+            DB::rollback();
+        }
     }
 }

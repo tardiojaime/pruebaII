@@ -39,13 +39,23 @@
     <a href="#" class="icon_responsive w-8 h-8 text-center rounded-full bg-black px-2 py-1 text-white" id="a_responsive"><i class="fas fa-bars" id="icon_responsive"></i></a>
     <div id="menu-izquierdo"
         class="min-h-screen bg-gray-100 menu relative shadow-md bg-white rounded-tl-3xl rounded-br-3xl overflow-hidden">
+        @if(Auth()->user()->avatar == NULL)
         <div class="shadow-md bg-center h-36 bg-cover"
             style="background-image:url({{asset('images/background2.jpg')}})">
             <div class="absolute mt-24">
-                <p class="text-sm font-medium">juan</p>
-                <p class="text-sm  font-medium">Tardio@gmail.com</p>
+                <p class="text-sm ml-1 font-bold text-white font-medium">{{Auth()->user()->name}}</p>
+                <p class="text-sm ml-1 font-bold text-white  font-medium">{{auth()->user()->email}}</p>
             </div>
         </div>
+        @else    
+        <div class="shadow-md bg-center h-36 bg-cover"
+            style="background-image:url({{asset('storage/'.Auth()->user()->avatar)}})">
+            <div class="absolute mt-24">
+                <p class="text-sm ml-1 font-bold font-medium">{{Auth()->user()->name}}</p>
+                <p class="text-sm ml-1 font-bold font-medium">{{auth()->user()->email}}</p>
+            </div>
+        </div>
+        @endif
         <ul class=" flex flex-col py-4">
             <li class="mb-1 hover:bg-white">
                 <a href="#" id="btn-articulos"
@@ -76,6 +86,7 @@
                     <span class="text-sm font-medium">Proveedores</span>
                 </a>
             </li>
+            @if(Auth()->user()->rol == "administrador")
             <li class="mb-1 hover:bg-white">
                 <a href="" id="btn-usuarios"
                     class="px-2 addClass border-blue-300 font-medium flex items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
@@ -83,6 +94,7 @@
                     <span class="text-sm">Usuarios</span>
                 </a>
             </li>
+            @endif
             <li class="mb-1 hover:bg-white">
                 <a href="" id="btn-estadistica"
                     class="px-2 addClass border-blue-800 flex font-medium items-center transform hover:translate-x-1 text-gray-800 hover:text-gray-500 ml-1 duration h-8">
@@ -117,7 +129,8 @@
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <a class="mr-1 rounded-full hover:text-purple-500" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        <a href="{{URL::action('UserController@visualizacion', Auth()->user()->id)}}" class="edit-user mr-3 rounded-full hover:text-blue-500"><i class="fas fa-user-cog"></i></a>
+                        <a class="mr-1 rounded-full hover:text-red-500" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <i class="fas fa-power-off"></i>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -129,7 +142,8 @@
             </div>
         </nav>
         <div class="px-2 mx-auto container" id="contenidos">
-            @if(count($articulo) != 0 && count($ventas) !=0)
+            @if(count($Article) != 0 && count($ventas) !=0)
+            <div class="flex flex-col">
             <figure class="highcharts-figure pr-1">
                 <div id="container"></div>
                 <p class="highcharts-description border-primary">
@@ -144,50 +158,14 @@
                     Ventas realizadas durante los ultimos dias
                 </p>
             </figure>
+            
+            </div>
             @else
             <div class="w-full p-5 sm:p-10 md:p-15">
                 <h2 class=" text-center h-8 text-2xl font-medium text-indigo-500">
                     Bienvenido
                 </h2>
-                <div class="grid grid-cols-2 gap-8 mb-5">
-                    <div
-                        class="bg-gradient-to-r from-green-400 hover:from-green-800 to-yellow-200 h-24 w-full flex items-center rounded-bl-2xl rounded-tr-2xl">
-                        <i class="fas fa-coins text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                        class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-yellow-200 to-pink-500 hover:to-pink-800 h-24 w-full flex items-center rounded-tl-2xl rounded-br-2xl">
-                        <i class="fas fa-coins text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                         class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-green-400 hover:from-green-800 to-yellow-200 h-24 w-full flex items-center rounded-bl-2xl rounded-tr-2xl">
-                        <i class="fas fa-hand-holding-usd text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                            class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-yellow-200 to-pink-500 hover:to-pink-800 h-24 w-full flex items-center rounded-tl-2xl rounded-br-2xl ">
-                        <i class="fas fa-hand-holding-usd text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                         class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-green-400 hover:from-green-800 to-yellow-200 h-24 w-full flex items-center rounded-bl-2xl rounded-tr-2xl ">
-                        <i class="fas fa-pepper-hot text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                            class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-                    <div
-                        class="bg-gradient-to-r from-yellow-200 to-pink-500 hover:to-pink-800 h-24 w-full flex items-center rounded-tl-2xl rounded-br-2xl">
-                        <i class="fas fa-user-tie text-3xl mx-3"></i>
-                        <a href="#" id="create-p"
-                            class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800">Agregar</a>
-                    </div>
-
-                </div>
+                <p>Inicie A Manejar el sistema</p>
             </div>
             @endif
         </div>
@@ -210,7 +188,7 @@
             text: 'Informe de Ventas'
         },
         subtitle: {
-            text: 'Ventas realizadas durante los ultimos dias.'
+            text: 'Ventas realizadas durante los ultimos 5 dias.'
         },
         plotOptions: {
             column: {
@@ -219,7 +197,7 @@
         },
         xAxis: {
             categories: [
-
+                @foreach($ventas as $ven)"{{$ven->fecha}}", @endforeach
             ],
             labels: {
                 skew3d: true,
@@ -230,7 +208,7 @@
         },
         yAxis: {
             title: {
-                text: null
+                text: 'Unidades vendidas'
             }
         },
         series: [{
@@ -257,7 +235,7 @@
             zMin: 0,
             name: 'countries',
             data: [
-                @foreach($articulo as $art) 
+                @foreach($Article as $art) 
                 {
                     "name": '{{$art->nombre}}',
                     y: {{$art->cantidad}},

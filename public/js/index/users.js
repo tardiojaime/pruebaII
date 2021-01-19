@@ -64,6 +64,11 @@ $(function(){
         load.newURL = '/Usuarios';
         load.index;
     });
+    $(".cancelar_us").on('click', function(evt){
+        evt.preventDefault();
+        load.newURL = '/Articulos';
+        load.index;
+    });
     $(".cancelar_p").on('click', function(evt){
         evt.preventDefault();
         load.newURL = '/Proveedores';
@@ -76,6 +81,7 @@ $(function(){
         load.create_se;
     });
 
+    /* componentes para la eliminacion */
     var removerclase = () => {
         $("#modal_delete").removeClass("hidden");
     }
@@ -87,23 +93,22 @@ $(function(){
         evt.preventDefault();
         let id = $(this).attr('ids');
         let usuario = $(this).attr('nombre');
-        row = $(this).closest('tr');
         $("#modal-form").attr('action', '/Usuarios/'+id);
         $("#id_delete").html(id);
         $("#info_title").html("Usuario");
+        $("#id_info").html(usuario);
         $("#mensajes").html('Supender Usuario..?');
-        $("#id_info").html(usuario);        
         removerclase();
     });
     $("#delete_data").on('click', function(evt){
         evt.preventDefault();
         let form = $(this).parents('form');
         let action = form.attr('action');
-        load.newURL ="/Usuarios";
         load.newaction = action;
         load.newdatos = form.serialize();
         load.store_modal;
-        row.remove();
+        let id =$("#id_delete").text();
+        $("#"+id+"").remove();
         addClase();
     });
 })

@@ -1,3 +1,4 @@
+@if(Auth()->user()->rol == "administrador")
 <div class="w-full p-5 sm:p-10 md:p-15">
     <h2 class=" text-center h-8 text-2xl font-medium text-indigo-500">
         Actualizar Usuario
@@ -60,3 +61,6 @@
     </form>
 </div>
 <script src="{{asset('js/index/users.js')}}"></script>
+@else
+<h1>Usuario no autorizado</h1>
+@endif

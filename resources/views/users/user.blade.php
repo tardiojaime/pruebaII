@@ -1,50 +1,48 @@
-<div class="swiper-container" style="
-        width: 100%;
-        padding-top: 50px;
-        padding-bottom: 50px;">
-    <div class="swiper-wrapper" style="
-        background-position: center;
-        background-size: cover;
-        width: 300px;
-        height: 350px;
-    ">
-        @foreach( $users as $user)
-        <div class="swiper-slide" style="background-image:url('{{asset('storage/'.$user->avatar)}}')">
-            <div class="fixed-bottom">
-                <strong style="color:white;">{{$user->email}}</strong>
-                <a href="#" class="btn btn-sm btn btn-outline-primary float-right mr-2 mb-2"><i
-                        class="fas fa-eye"></i></a>
-                <a href="#" class="btn btn-sm btn btn-outline-primary float-right mr-2 mb-2"><i
-                        class="fas fa-pen-alt"></i></a>
-                <a href="#" class="btn btn-sm btn btn-outline-primary float-right mr-2 mb-2"><i
-                        class="far fa-trash-alt"></i></a>
+<div class="w-full p-5 sm:p-10 md:p-15">
+    <h2 class=" text-center h-8 text-2xl font-medium text-indigo-500">
+        Actualizar Perfil
+    </h2>
+    <form action="/update/user/{{$user->id}}" method="POST" enctype="multipart/form-data" class="space-y-2 mt-3" id="articulo-form">
+        @method('PUT')
+        @csrf
+        <div class="grid grid-cols-2 gap-4 mb-5">
+            <div>
+                <label for="nombre" class="text-sm font-medium text-indigo-500">
+                    Nombre
+                </label>
+                <input type="text" name="nombre" id="nombre"
+                    class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    value="{{$user->name}}">
+            </div>
+            <div>
+                <label for="email" class="text-sm font-medium text-indigo-500">
+                    Email
+                </label>
+                <input type="email" name="email" id="email"
+                    class="w-full py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                    value="{{$user->email}}">
+            </div>
+            <div>
+                <label for="avatar" class="text-sm font-medium text-indigo-500">
+                    Avatar
+                </label>
+                <input type="file" name="avatar" id="avatar"
+                    class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="telefono" class="text-sm font-medium text-indigo-500">
+                    Telefono
+                </label>
+                <input type="number" name="telefono" id="telefono" value="{{$user->telefono}}"
+                    class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
         </div>
-        @endforeach
-    </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
+        <div class="flex justify-between">
+            <input type="submit" value="Actualizar"
+                class="py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-indigo-600 hover:bg-indigo-800">
+            <a href="#"
+                class="cancelar_us py-1 px-8 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-red-600 hover:bg-red-800 ">Volver</a>
+        </div>
+    </form>
 </div>
-<script>
-var swiper = new Swiper('.swiper-container', {
-    effect: 'coverflow',
-    grabCursor: true,
-    centeredSlides: true,
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-
-    },
-    slidesPerView: 'auto',
-    coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-    },
-    pagination: {
-        el: '.swiper-pagination',
-    },
-});
-</script>
+<script src="{{asset('js/index/users.js')}}"></script>

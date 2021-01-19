@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        /* $this->middleware('auth'); */
+    }
     public function index()
     {
         $user = DB::table('users as u')
@@ -33,7 +37,11 @@ class UserController extends Controller
             $file = $request->file('avatar')->store('public/image/avatars');
             $user->avatar = self::suprimir($file);
         }
-        $user->rol = $request->get('rol');
+        if($request->rol){
+            $user->rol = $request->get('rol');
+        }else{
+            $user->rol = "administrador";
+        }
         $user->telefono = $request->get('telefono');
         $user->status = "1";
         $user->save();
@@ -62,6 +70,24 @@ class UserController extends Controller
          $user->rol = $request->get('rol');
          $user->update();
          return response()->json(['sms'=>'Usuario Actualizado.']);
+    }
+    public function visualizacion($id){
+        $user = User::findOrFail($id);
+        return view('users.user', ['user'=>$user]);
+    }
+    public function actualizacion(Request $request, $id)
+    {
+         $user= User::findOrFail($id);
+         $user->name = $request->get('nombre');
+         $user->email = $request->get('email');
+         if($request->hasfile('avatar')){
+             $avt = $request->file('avatar')->store('public/image/avatars');
+             $user->avatar = self::suprimir($avt);
+         }
+         $user->telefono = $request->get('telefono');
+         $user->rol = $request->get('rol');
+         $user->update();
+         return redirect('home');
     }
 
     /**

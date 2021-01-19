@@ -42,10 +42,10 @@
                                         class="btn-enlaces view-venta">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="#" class="btn-enlaces page delete-user">
+                                    <a href="#" ids="{{$ventas->id}}" precio="{{$ventas->precio}}" class="btn-enlaces delete_venta">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
-                                    <a href="{{URL::action('HomeController@PdfVentas', $ventas->id)}}" class="btn-enlaces delete-user">
+                                    <a href="{{URL::action('HomeController@PdfVentas', $ventas->id)}}"  class="btn-enlaces">
                                         <i class="fas fa-file-pdf"></i>
                                     </a>
                                 </div>

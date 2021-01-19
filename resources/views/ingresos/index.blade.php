@@ -47,7 +47,7 @@
                                         class="btn-enlaces view-ingreso">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <a href="#" class="btn-enlaces page delete-user">
+                                    <a href="#" class="btn-enlaces page delete_ingreso" ids="{{$ing->id}}" precio="{{$ing->precio}}">
                                         <i class="far fa-trash-alt"></i>
                                     </a>
                                     <a href="{{URL::action('HomeController@PdfIngresos', $ing->id)}}" class="btn-enlaces delete-user">
