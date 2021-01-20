@@ -23,7 +23,7 @@
                 </label>
                 <input type="text" name="fecha" id="fecha" disabled
                     class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    <input type="hidden" name="usuario" value="yoy">
+                <input type="hidden" name="usuario" value="{{Auth()->user()->email}}">
             </div>
         </div>
         <div class="grid grid-cols-2 gap-4 border border-green-600 rounded-md px-5 py-5">
@@ -32,43 +32,38 @@
                     Articulo
                 </label>
 
-                <select name="" id="articulo"
+                <select name="" id="articulos_i"
                     class="w-full  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"">
                     <option value="">Articulo</option> 
                     @foreach($articulos as $art)
-                     <option value="
-                    {{$art->id}}_{{$art->nombre}}_{{$art->precio}}_{{$art->cantidad}}">{{$art->nombre}}</option>
+                     <option value=" {{$art->id}}_{{$art->nombre}}">{{$art->nombre}}</option>
                     @endforeach
                 </select>
             </div>
             <div>
-                <label for="precio" class="text-sm font-medium text-indigo-500">
+                <label for="precio_i" class="text-sm font-medium text-indigo-500">
                     Precio
                 </label>
-                <p id="precio"
+                <input id="precio_i" type="number" required  min="0"
                     class="w-full px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    0.0
-                </p>
-            </div>
-            <div>
-                <label class="text-sm font-medium text-indigo-500">
-                    Disponible
-                </label>
-                <p id="disponible"
-                    class="w-full px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                    0.0
-                </p>
             </div>
             <div>
                 <label for="cantidad" class="text-sm font-medium text-indigo-500">
                     Cantidad
                 </label>
-                <input type="number" name="" id="cantidad"
+                <input type="number" name="" id="cantidad" required min="0" 
+                    class="w-full px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+            </div>
+            <div>
+                <label for="descuento" class="text-sm font-medium text-indigo-500">
+                    Descuento Bs.
+                </label>
+                <input type="number" name="" id="descuento" required min="0" value="0"
                     class="w-full px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
             <div></div>
             <div class="flex w-full justify-end items-center">
-                <a href="#" id="AgregarV"
+                <a href="#" id="AgregarI"
                     class="hidden py-1 px-2 border-transparent text-sm font-medium rounded-bl-lg rounded-tr-lg text-white bg-green-600 hover:bg-green-800 ">Agregar</a>
             </div>
         </div>

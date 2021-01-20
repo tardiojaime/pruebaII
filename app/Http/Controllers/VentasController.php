@@ -35,15 +35,11 @@ class VentasController extends Controller
      */
     public function create()
     {
-        $user = DB::table('users as u')
-        ->select('u.id', 'u.name')
-        ->where('u.rol', '=', 'cliente')
-        ->get();
         $articulos = DB::table('articulo as a')
-        ->select('a.id','a.nombre', 'a.precio', 'a.cantidad')
+        ->select('a.id','a.nombre', 'a.precio', 'a.stock')
         ->where('a.status', '=', '1')
         ->get();
-        return view('ventas.create', ['usuario'=>$user, 'articulo'=>$articulos]);
+        return view('ventas.create', ['articulo'=>$articulos]);
     }
 
     public function store(Request $request)
@@ -51,16 +47,15 @@ class VentasController extends Controller
         try {
             DB::beginTransaction();
             $venta = new Ventas();
-            $ids = $request->get('articulos');
             $venta->precio = $request->get('totalv');
             $venta->fecha = Carbon::now('America/La_Paz')->toDateTimeString();
-            $venta->usuario = $request->get('usuario');
+            $venta->usuario = $request->get('vendedor');
 
             $venta->save();
             
-            $ids = $request->get('articulo');
+            $ids = $request->get('articulos');
             $cantidades = $request->get('cantidad');
-            $precios = $request->get('precio');
+            $precios = $request->get('preciov');
             $count = count($ids);
             $i = 0;
 

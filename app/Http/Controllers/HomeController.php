@@ -45,7 +45,7 @@ class HomeController extends Controller
         }
         $modificado = $ano."-".$mes."-".$dia;
         $ventas = DB::select('SELECT sum(d.cantidad) as cantidad, date(v.fecha) as fecha from venta v INNER JOIN detallev d ON d.venta=v.id WHERE v.fecha BETWEEN '.$modificado.' AND date(now()) GROUP BY date(v.fecha) ORDER BY v.fecha DESC LIMIT 5');
-        $articulos = DB::select('SELECT a.nombre, sum(d.cantidad) as cantidad, a.cantidad as disponibles  FROM articulo a INNER JOIN detallev d ON a.id = d.articulo  GROUP BY a.id, a.nombre, a.cantidad ORDER BY sum(d.cantidad) DESC LIMIT 5');
+        $articulos = DB::select('SELECT a.nombre, sum(d.cantidad) as cantidad, a.stock as disponibles  FROM articulo a INNER JOIN detallev d ON a.id = d.articulo  GROUP BY a.id, a.nombre, a.stock ORDER BY sum(d.cantidad) DESC LIMIT 5');
         return view('main/index', ['ventas'=>$ventas, 'Article'=>$articulos]);
     }
     public function estadistica(){

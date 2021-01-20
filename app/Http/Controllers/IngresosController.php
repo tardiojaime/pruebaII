@@ -29,7 +29,7 @@ class IngresosController extends Controller
         ->where('u.status', '=', '1')
         ->get();
         $articulos = DB::table('articulo as a')
-        ->select('a.id','a.nombre', 'a.precio', 'a.cantidad')
+        ->select('a.id','a.nombre')
         ->where('a.status', '=', '1')
         ->get();
         return view('ingresos.create', ['proveedores'=>$proveedores, 'articulos'=>$articulos]);
@@ -73,8 +73,8 @@ class IngresosController extends Controller
     public function show($id)
     {
         $ingreso = DB::table('ingreso as i')
-        ->join('users as u', 'u.id', '=', 'i.proveedor')
-        ->select('i.precio', 'i.fecha', 'i.usuario', 'u.nombre')
+        ->join('proveedor as p', 'p.id', '=', 'i.proveedor')
+        ->select('i.precio', 'i.fecha', 'i.usuario', 'p.nombre')
         ->where('i.id', '=', $id)
         ->first();
         $detalle = DB::table('detallei as di')

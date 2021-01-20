@@ -28,7 +28,7 @@
                 <input type="number" name="precio" id="precio"
                     class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
             </div>
-            <input type="hidden" name="usuario" value="Jaime">
+            <input type="hidden" name="usuario" value="{{Auth()->user()->email}}">
         </div>
         <div class="flex justify-between">
             <input type="submit" value="Agregar" id="enviar_art"

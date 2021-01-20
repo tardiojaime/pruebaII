@@ -246,7 +246,6 @@
         }]
     });
     </script>
-    <!-- <script src="{{asset('js/cargaIndex/index.js')}}"></script> -->
     @show
     <script src="{{asset('js/all.js')}}"></script>
     <script src="{{asset('js/cargaIndex/index.js')}}"></script>

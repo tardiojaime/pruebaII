@@ -7,15 +7,11 @@
         <div class="grid grid-cols-2 gap-4 mb-5">
             <div>
                 <label for="usuario" class="text-sm font-medium text-indigo-500">
-                    Descripcion
+                    Usuario
                 </label>
-
-                <select name="usuario" id=""
-                    class="w-full py-1 px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"">
-                    @foreach($usuario as $usu)
-                    <option value=" {{$usu->id}}">{{$usu->name}}</option>
-                    @endforeach
-                </select>
+                <input type="text" name="usuario" value="{{Auth()->user()->email}}" disabled
+                    class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <input type="hidden" name="vendedor" value="{{Auth()->user()->email}}">
             </div>
             <div>
                 <label for="fecha" class="text-sm font-medium text-indigo-500">
@@ -36,7 +32,7 @@
                     <option value="">Articulo</option> 
                     @foreach($articulo as $art)
                      <option value="
-                    {{$art->id}}_{{$art->nombre}}_{{$art->precio}}_{{$art->cantidad}}">{{$art->nombre}}</option>
+                    {{$art->id}}_{{$art->nombre}}_{{$art->precio}}_{{$art->stock}}">{{$art->nombre}}</option>
                     @endforeach
                 </select>
             </div>

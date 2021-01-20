@@ -32,7 +32,7 @@
                 <label for="precio" class="text-sm font-medium text-indigo-500">
                     Precio
                 </label>
-                <input type="number" name="precio" id="precio"
+                <input type="number" name="precio" id="precio" disabled
                     class="w-full py-1  px-2 border border-gray-300 rounded-bl-lg rounded-tr-lg focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     value = "{{$datos->precio}}"
                     >

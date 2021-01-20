@@ -48,7 +48,7 @@ class ArticuloController extends Controller
         $art->nombre = $request->get('nombre');
         $art->descripcion = $request->get('descripcion');
         $art->precio = $request->get('precio');
-        $art->cantidad = 0;
+        $art->stock = 0;
         $art->usuario = $request->get('usuario');
         $art->fecha = Carbon::now('America/La_Paz')->toDateTimeString();
         $art->status = "1";
